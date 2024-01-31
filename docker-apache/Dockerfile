@@ -67,10 +67,6 @@ RUN \
   # Install gettext and perl used to validate locales extraction.
   && apt install -y gettext \
   && apt install -y perl \
-  \
-  # Install chromium-driver used for front-end tests.
-  && apt install -y chromium-driver \
-  \
   # Install sudo that may be usefull to temporarly install upcoming required system components.
   && apt install -y sudo \
   && (echo "apptest  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/apptest) \
