@@ -86,7 +86,12 @@ RUN addgroup -gid 1000 apptest \
   && useradd -d /home/apptest -g apptest -u 1000 apptest \
   && mkdir -p /var/apptest \
   && chown apptest:apptest /var/apptest
-USER apptest
 VOLUME /home/apptest
 VOLUME /var/apptest
+# Remove default Apache configuration
+RUN rm /etc/apache2/sites-enabled/000-default.conf
+# Copy Apache configuration
+COPY apache-sites/apptest-vhost.conf /etc/apache2/sites-enabled/apptest.conf
+
+USER apptest
 WORKDIR /var/apptest
