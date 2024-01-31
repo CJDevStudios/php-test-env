@@ -89,9 +89,10 @@ RUN addgroup -gid 1000 apptest \
 VOLUME /home/apptest
 VOLUME /var/apptest
 # Remove default Apache configuration
-RUN rm /etc/apache2/sites-enabled/000-default.conf
+RUN a2dissite 000-default.conf
 # Copy Apache configuration
-COPY apache-sites/apptest-vhost.conf /etc/apache2/sites-enabled/apptest.conf
+COPY apache-sites/apptest-vhost.conf /etc/apache2/sites-available/apptest.conf
+RUN a2ensite apptest.conf
 # Enable Apache modules
 RUN a2enmod rewrite
 
