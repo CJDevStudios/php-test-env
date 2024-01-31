@@ -75,7 +75,9 @@ RUN \
   && apt install -y bash \
   \
   # Install patch utility that may be usefull to patch dependencies.
-  && apt install -y patch
+  && apt install -y patch \
+  # Install Cypress dependencies
+  && apt install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
 # Copy composer binary
 COPY --from=composer /usr/bin/composer /usr/bin/composer
